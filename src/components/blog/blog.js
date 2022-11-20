@@ -1,35 +1,87 @@
-import Avatar from "@material-ui/core/Avatar";
+import { makeStyles } from '@material-ui/core/styles';
+import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase";
 
-function Post({blog_id, user_id, title, description, imageUrl, userData }) {
-    const [user, loading] = useAuthState(auth);
+import Avatar from "@material-ui/core/Avatar";
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+
+
+const useStyles = makeStyles((theme) => ({
+    blogTitle: {
+        fontWeight: 800,
+        paddingBottom: theme.spacing(3)
+    },
+    card: {
+        maxWidth: "100%",
+        height: 500
+    },
+    media: {
+        height: 200
+    },
+    cardActions: {
+        display: "flex",
+        margin: "0 10px",
+        justifyContent: "space-between"
+    },
+    author: {
+        display: "flex"
+    },
+    cardContent: {
+        height: 200,
+        overflow: "hidden"
+    }
+  }));
+
+
+function Post({blog_id, user_id, title, description, imageUrl, userData, deletePost, editPost}) {
+    const [user] = useAuthState(auth);
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const classes = useStyles();
 
     return (
-        <div className="post">
-        <div className="post__header">
-            <span>
-            <Avatar
-            className="post__avatar"
-            alt={String(user_id)}
-            src="/static/images/avatar/1.jpg"
-            />
-            { user && user_id === userData.user_id ?
-                <span>
-                    <button className="text_button">Edit</button>
-                    <button className="text__button">Delete</button>
-                </span>
-                :
-                <></>
-            }
-            </span>
-            <h3>{title}</h3>
-        </div>
-        <img className="post__image" src={imageUrl} alt={blog_id} />
-        <h4 className="post__text">
-            {description}
-        </h4>
-        </div>
+        <Grid item xs={12} sm={6} md={4}>
+            <Card className={classes.card}>
+                <CardActionArea>
+                    <CardMedia
+                    className={classes.media}
+                    image={imageUrl}
+                    title="Contemplative Reptile"
+                    />
+                    <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        {title}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        {description}
+                    </Typography>
+                    </CardContent>
+                </CardActionArea>
+                <CardActions className={classes.cardActions}>
+                    <Box className={classes.author}>
+                    <Avatar alt={String(blog_id)} src="/static/images/avatar/1.jpg" />
+                    </Box>
+                    <Box>
+                    { user && userData && user_id === userData?.user_id ?
+                        <span>
+                            <button className="text__button" onClick={handleOpen} >Edit</button>
+                            <button className="text__button" onClick={() => { deletePost(blog_id) }}>Delete</button>
+                        </span>
+                        :
+                        <></>
+                    }
+                    </Box>
+                </CardActions>
+            </Card>
+        </Grid>
     );
 }
 
