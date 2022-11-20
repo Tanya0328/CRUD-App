@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 
 import "./blog_page.css";
 import Post from "../blog/blog";
-import CreatePost from "../create_modal";
+import CreatePost from "../blog/create_modal";
 
 
 const images = [
@@ -87,7 +87,6 @@ function BlogPage() {
         }
         return post;
       })
-      handleClose();
       setPosts(modifiedPosts);
     })
     .catch((error) => {
@@ -174,7 +173,7 @@ function BlogPage() {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
               >
-                <CreatePost addPost={addPost}/>
+                <CreatePost addPost={addPost} title={""} description={""}/>
               </Modal>
               <button className="text__button" onClick={logout}>Logout</button>
             </div>
