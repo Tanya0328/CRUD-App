@@ -1,6 +1,29 @@
-# Getting Started with Create React App
+# About Blog App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An application to display, create, edit, update and delete the posts by a user. Posts are visible to all the users.   
+
+# login
+
+Upon clicking on the Login button, login pop-up is displyed and User can either login by entering the Username & Password or login via Google. Only loggedIn users are able to create new posts, edit posts, delete posts. The db generates a random user-id upon loggin in. Posts matching the user id are open for edit/delete. For creating a post, user can click on the '+' icon on the top and add Title, Description and click on create. A randomly generated photo will be attached to the Title and Description.
+
+# signup
+
+A new user can sign up by clicking on the Sign up button. User will have to enter Name, e-mail address and Password and then it will be redirected to the application as a logged in user.
+
+# logout
+
+Upon clicking on the Logout button the user will be logged out and theb Edit/Delete capabilities will be gone. 
+
+# Technologies Used
+To make the app responsive, material CSS is used.
+Used Google Oauth for signIn signOut functionality, firebase for storing user information. 
+
+# How to run the project
+
+To download the source code to your system :
+git clone https://github.com/Tanya0328/CRUD-App.git
+
+You will get a directory named CRUD-App created filled with the source code.
 
 ## Available Scripts
 
