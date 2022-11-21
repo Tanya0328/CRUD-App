@@ -78,7 +78,7 @@ function Post({blog_id, user_id, title, description, imageUrl, userData, deleteP
                 </CardActionArea>
                 <CardActions className={classes.cardActions}>
                     <Box className={classes.author}>
-                    <Avatar alt={String(blog_id)} src="/static/images/avatar/1.jpg" />
+                    <Avatar alt={String(user_id)} src="/static/images/avatar/1.jpg" />
                     </Box>
                     <Box>
                     { user && userData && user_id === userData?.user_id ?

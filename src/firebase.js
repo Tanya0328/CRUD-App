@@ -18,13 +18,15 @@ import {
 import { toast } from "react-toastify";
 
 // Firebase configuration
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCDXIZ8Y_kDN-Wf9P_h1MhWafQzC7dPpMU",
-  authDomain: "blog-3cd4f.firebaseapp.com",
-  projectId: "blog-3cd4f",
-  storageBucket: "blog-3cd4f.appspot.com",
-  messagingSenderId: "523817500243",
-  appId: "1:523817500243:web:58ee0e4661e49154ef90a6"
+  apiKey: "AIzaSyATF0M9innnRtWqCQtj2zGUJ4SOxz-tDu0",
+  authDomain: "crud-app-107de.firebaseapp.com",
+  databaseURL: "https://crud-app-107de-default-rtdb.firebaseio.com",
+  projectId: "crud-app-107de",
+  storageBucket: "crud-app-107de.appspot.com",
+  messagingSenderId: "536399805547",
+  appId: "1:536399805547:web:b91116982cf36cfe97452e",
 };
 
 // Initialize Firebase
