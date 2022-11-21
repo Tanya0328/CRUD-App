@@ -15,7 +15,7 @@ function Register() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [user, loading] = useAuthState(auth);
-  const history = useNavigate();
+  const navigate = useNavigate();
   const paperStyle={padding :20,height:'70vh',width:280, margin:"20px auto"}
   const avatarStyle={backgroundColor:'#1bbd7e'}
   const btnstyle={margin:'8px 0'}
@@ -25,8 +25,8 @@ function Register() {
   };
   useEffect(() => {
     if (loading) return;
-    if (user) history.replace("/");
-  }, [user, loading, history]);
+    if (user) navigate("/");
+  }, [user, loading, navigate]);
   return (
     <Grid>
       <Paper elevation={10} style={paperStyle}>
@@ -42,18 +42,18 @@ function Register() {
           fullWidth required
         />
         <TextField
-          label='Password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          type='password'
+          label='Email'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="E-mail Address"
+          type='email'
           fullWidth required
         />
         <TextField
           label='Password'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail Address"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
           type='password'
           fullWidth required
         />
